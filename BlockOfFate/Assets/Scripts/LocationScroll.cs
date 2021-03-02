@@ -1,0 +1,20 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class LocationScroll : MonoBehaviour
+{
+    
+    
+    void Start()
+    {
+        
+    }
+
+    public void TopContent()
+    {
+        
+    }
+    
+}
