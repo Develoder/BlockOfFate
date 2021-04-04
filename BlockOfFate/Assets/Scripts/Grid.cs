@@ -1,31 +1,30 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
-    [SerializeField] private Vector2 _sizeCell = new Vector2(1, 1);
-    public Vector2 SizeCell
-    {
-        get
-        {
-            if (_sizeCell.x != 0 || _sizeCell.y != 0)
-                return _sizeCell;
-            return new Vector2(0.1f, 0.1f);
-        }
-    }
-
-    [SerializeField] private Vector2 _ofsetCell = new Vector2(0.5f, 0.5f);
-    public Vector2 OfsetCell
-    {
-        get
-        {
-            if (_ofsetCell.x != 0 || _ofsetCell.y != 0)
-                return _ofsetCell;
-            return new Vector2(0.1f, 0.1f);
-        }
-    }
+    public static Vector2 sizeCell = new Vector2(1, 1);
+    public static Vector2 offsetCell = new Vector2(0.5f, 0.5f);
 
     private List<List<GameObject>> _gridObject = new List<List<GameObject>>();
+    
+    public static Grid instance;
 
+    private void Awake()
+    {
+        instance = this;
+    }
+    
+    public void MoveObject(Transform transform, int stepX, int stepY)
+    {
+        Vector3 _addPosititon = new Vector3();
+        _addPosititon.x = sizeCell.x * stepX;
+        _addPosititon.z = sizeCell.y * stepY;
+
+        transform.position += _addPosititon;
+    }
+    
+    
 }

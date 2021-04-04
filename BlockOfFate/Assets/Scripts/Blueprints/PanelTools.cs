@@ -5,17 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class PanelTools : MonoBehaviour
 {
-    [Header("Scene")]
-    [SerializeField] private FormBlueprint formBlueprint;
-    
-    
     public void RuneBlueprints()
     {
-        formBlueprint.RunBlueprint();
+        PlayerController.instince.ReturnStartPosition();
+        FormBlueprint.instance.RunBlueprint();
     }
 
     public void ReloadLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        PlayerController.instince.ReturnStartPosition();
+    }
+
+    public void DeleteLastBlueprint()
+    {
+        FormBlueprint.instance.DeletedLastBlueprint();
+    }
+
+    public void ClearFormBlueprint()
+    {
+        FormBlueprint.instance.DeletedAllBlueprint();
     }
 }

@@ -8,8 +8,6 @@ public class BlueprintBase : MonoBehaviour
 {
     [SerializeField] private Text textName;
     
-    
-    private MoveGrid moveGrid;
 
     public enum TypeBlueprint
     {
@@ -19,37 +17,36 @@ public class BlueprintBase : MonoBehaviour
         Back
     }
 
-    private TypeBlueprint typeBlueprint;
+    private TypeBlueprint _typeBlueprint;
 
-    public TypeBlueprint setTypeBlueprint
+    public TypeBlueprint typeBlueprint
     {
         set
         {
-            typeBlueprint = value;
+            _typeBlueprint = value;
             ChangeType(value);
         }
-    }
-
-    private void Start()
-    {
-        moveGrid = GameObject.Find("SM_Prop_Bowling_Pin_01").GetComponent<MoveGrid>();
+        get
+        {
+            return _typeBlueprint;
+        }
     }
 
     public void RunBlueprint()
     {
-        switch (typeBlueprint)
+        switch (_typeBlueprint)
         {
             case TypeBlueprint.Left:
-                moveGrid.MoveObject(-1, 0);
+                PlayerController.instince.MovePlayer(-1, 0);
                 break;
             case TypeBlueprint.Right:
-                moveGrid.MoveObject(1, 0);
+                PlayerController.instince.MovePlayer(1, 0);
                 break;
             case TypeBlueprint.Forward:
-                moveGrid.MoveObject(0, 1);
+                PlayerController.instince.MovePlayer(0, 1);
                 break;
             case TypeBlueprint.Back:
-                moveGrid.MoveObject(0, -1);
+                PlayerController.instince.MovePlayer(0, -1);
                 break;
 
             default:

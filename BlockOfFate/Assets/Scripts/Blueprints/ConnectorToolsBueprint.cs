@@ -1,15 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ConnectorToolsBueprint : MonoBehaviour
 {
-    [Header("Scene")]
-    [SerializeField] private FormBlueprint formBlueprint;
-
+    public static ConnectorToolsBueprint instance;
+    
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void ClickedTool(BlueprintBase.TypeBlueprint typeBlueprint)
     {
-        formBlueprint.AppendBlueprint(typeBlueprint);
+        FormBlueprint.instance.AppendBlueprint(typeBlueprint);
     }
 }

@@ -6,7 +6,11 @@ public class UIManager : MonoBehaviour
 {
     public void ExitGame()
     {
-        Application.Quit();
-        
+        GameSceneManager.instance.ExitGame();
+    }
+
+    public void MainMenu()
+    {
+        GameSceneManager.instance.LoadMainMenu();
     }
 }
