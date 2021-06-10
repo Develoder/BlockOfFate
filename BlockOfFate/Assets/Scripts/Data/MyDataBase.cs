@@ -3,6 +3,7 @@ using System.Data;
 using Mono.Data.Sqlite;
 using System.IO;
 
+// Класс подключение к БД
 static class MyDataBase
 {
     private const string fileName = "GameData.bytes";

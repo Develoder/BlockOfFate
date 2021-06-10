@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+// Класс кнопки выбора уровня
 public class ButtonLevel : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private Text levelText;
@@ -14,6 +15,7 @@ public class ButtonLevel : MonoBehaviour, IPointerDownHandler
     private int currenLevel;
     private bool isActive;
     
+    // Инициализация кнопки уровня (не конструктор)
     public void Init(int level, int star, bool isActive)
     {
         currenLevel = level;
@@ -24,11 +26,13 @@ public class ButtonLevel : MonoBehaviour, IPointerDownHandler
         ButtonEnable(isActive);
     }
 
+    // Установка названия уровня
     private void SetLevel(int level)
     {
         levelText.text = level.ToString();
     }
 
+    // Активация или деактивация кнопки в соответсвии пройденным уровням
     private void ActiveStars(int count)
     {
         for (int i = 0; i < 3; i++)
@@ -46,6 +50,7 @@ public class ButtonLevel : MonoBehaviour, IPointerDownHandler
         }
     }
 
+    // Деактивация кнопки
     private void ButtonEnable(bool isActive)
     {
         if (isActive)
@@ -54,6 +59,7 @@ public class ButtonLevel : MonoBehaviour, IPointerDownHandler
             maskPlane.SetActive(true);
     }
 
+    // Нажатие кнопки и последующая загрузка уровня
     public void OnPointerDown(PointerEventData eventData)
     {
         if (isActive)

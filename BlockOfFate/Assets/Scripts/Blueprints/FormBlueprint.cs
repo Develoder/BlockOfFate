@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Панель шаблона
 public class FormBlueprint : MonoBehaviour
 {
     [Header("Scene")] 
@@ -24,17 +25,20 @@ public class FormBlueprint : MonoBehaviour
         instance = this;
     }
 
+    // Запускает корутину на проигрывание всех нод
     public void RunBlueprint()
     {
         StopRunBlueprint();
         StartCoroutine(IERunBlueprint());
     }
 
+    // Останавливает корутину
     public void StopRunBlueprint()
     {
         StopAllCoroutines();
     }
 
+    // Метод идет по всем нодам и запускает их действие
     IEnumerator IERunBlueprint()
     {
         foreach (BlueprintBase blprBases in blueprintBases)
@@ -44,6 +48,7 @@ public class FormBlueprint : MonoBehaviour
         }
     }
 
+    // Добавление ноды в шаблон
     public void AppendBlueprint(BlueprintBase.TypeBlueprint typeBlueprint)
     {
         print($"Blueprint is create {typeBlueprint}");
@@ -56,6 +61,7 @@ public class FormBlueprint : MonoBehaviour
         blueprintBases.Add(blueBase);
     }
 
+    // Удаление последней ноды из шаблона
     public void DeletedLastBlueprint()
     {
         if (gameBlueprints.Count == 0)
@@ -63,6 +69,7 @@ public class FormBlueprint : MonoBehaviour
         DeleteBlueprint(gameBlueprints.Count - 1);
     }
 
+    // Удаление всех нод из шаблона
     public void DeletedAllBlueprint()
     {
         if (gameBlueprints.Count == 0)
@@ -73,6 +80,7 @@ public class FormBlueprint : MonoBehaviour
         }
     }
 
+    // Удаление ноды
     private void DeleteBlueprint(int index)
     {
         Destroy(gameBlueprints[index]);

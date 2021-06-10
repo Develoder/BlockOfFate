@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Класс базовой ноды
 public class BlueprintBase : MonoBehaviour
 {
     [SerializeField] private Text textName;
-    
 
+    // Тип ноды
     public enum TypeBlueprint
     {
         Left,
@@ -26,12 +27,10 @@ public class BlueprintBase : MonoBehaviour
             _typeBlueprint = value;
             ChangeType(value);
         }
-        get
-        {
-            return _typeBlueprint;
-        }
+        get { return _typeBlueprint; }
     }
 
+    // Проигрывание ноды
     public void RunBlueprint()
     {
         switch (_typeBlueprint)
@@ -55,6 +54,7 @@ public class BlueprintBase : MonoBehaviour
         }
     }
 
+    // Смета типа ноды
     private void ChangeType(TypeBlueprint blueprint)
     {
         switch (blueprint)

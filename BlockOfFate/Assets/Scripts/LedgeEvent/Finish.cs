@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Класс финиша
 public class Finish : MonoBehaviour
 {
+    // Метод проверки зашел ли игрок на текущую клетку
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -13,6 +15,7 @@ public class Finish : MonoBehaviour
         }
     }
 
+    // Выполнение финиша с последующим сохранением
     private void Finished()
     {
         int currentLevel = MainMenu.instance.GetCurrentLevel();

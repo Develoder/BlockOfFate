@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Класс мировой сетки
 public class Grid : MonoBehaviour
 {
     public static Vector2 sizeCell = new Vector2(1, 1);
@@ -17,14 +18,33 @@ public class Grid : MonoBehaviour
         instance = this;
     }
     
+    // Перемещает объект
     public void MoveObject(Transform transform, int stepX, int stepY)
     {
-        Vector3 _addPosititon = new Vector3();
-        _addPosititon.x = sizeCell.x * stepX;
-        _addPosititon.z = sizeCell.y * stepY;
+        Vector3 nextPosition = transform.position;
+        nextPosition.x += sizeCell.x * stepX;
+        nextPosition.z += sizeCell.y * stepY;
+        
+        if (OnObstacle(nextPosition))
+            return;
+        
+        transform.position = nextPosition;
+    }
 
-        transform.position += _addPosititon;
+    public static bool OnObstacle(Vector3 position)
+    {
+        for (int i = 0; i < EditorGrid.obstacleTransforms.Count; i++)
+            if (EditorGrid.obstacleTransforms[i] == position)
+                return true;
+        return false;
     }
     
-    
+    public static Vector3 RoundVector(Vector3 vector)
+    {
+        Vector3 retVector = new Vector3(
+            vector.x - (vector.x + offsetCell.x) % sizeCell.x,
+            0,
+            vector.z - (vector.z + offsetCell.y) % sizeCell.y);
+        return retVector;
+    }
 }

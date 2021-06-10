@@ -2,6 +2,7 @@
 using System.Data;
 using UnityEngine;
 
+// Управление уровнем
 public class LevelsController : MonoBehaviour
 {
     [SerializeField] private GameObject prefabButtonLevel;
@@ -11,6 +12,7 @@ public class LevelsController : MonoBehaviour
         GenerateLevelButton();
     }
 
+    // Генерирует шаблон по сохраненным данным из БД
     private void GenerateLevelButton()
     {
         DataTable dataTable = MyDataBase.GetTable("SELECT * FROM Level");

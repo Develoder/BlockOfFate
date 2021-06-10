@@ -4,11 +4,12 @@ using System.Data;
 using UnityEngine;
 using System.Linq;
 
-
+// Калсс сохранения шаблонов в базу данных
 public class DatabaseBlueprint : MonoBehaviour
 {
     public static DatabaseBlueprint instance;
 
+    // Словарь соответствий символов и типа ноды
     private static Dictionary<string, BlueprintBase.TypeBlueprint> complineCharBlpr = new Dictionary<string, BlueprintBase.TypeBlueprint>()
     {
         {"1", BlueprintBase.TypeBlueprint.Left},
@@ -30,6 +31,7 @@ public class DatabaseBlueprint : MonoBehaviour
         GameSceneManager.instance.ChangeSceneEvent += SaveBlueprint;
     }
 
+    // Загрузка сохраненных нод
     private void LoadBlueprint()
     {
         currentLevel = MainMenu.instance.GetCurrentLevel();
@@ -43,6 +45,7 @@ public class DatabaseBlueprint : MonoBehaviour
         }
     }
 
+    // Сохраняет шаблон текущего уровня
     private void SaveBlueprint()
     {
         List<string> saveChar = new List<string>();

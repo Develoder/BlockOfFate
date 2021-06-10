@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
+// Статичный класс дополнительных функций
 public static class Utilits 
 {
     #region Целочисленное деление
